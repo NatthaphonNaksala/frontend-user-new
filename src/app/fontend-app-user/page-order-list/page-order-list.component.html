@@ -1,0 +1,67 @@
+
+<div class="grid grid-rows-[20fr_60fr] min-h-screen relative overflow-hidden">
+    <div class="custom-background-top sticky top-0 w-full h-full z-50"></div>
+   
+    <div class="custom-background relative z-40 md:mx-36 w-full 2xl:transform 2xl:-translate-x-36">
+        <div class="bg-[rgba(250,175,21,1)] p-3 rounded-3xl m-6 text-center text-2xl text-white">
+            <div class="flex flex-col items-center">
+                <p class="mx-auto">โต๊ะ 1</p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center">
+            <img src="../../../assets/image/wait.gif" alt="" class="w-40 h-20 mb-4"  >
+        </div>
+        <div class="bottom-0 w-full flex justify-center mb-6">
+            <img src="../../../assets/image/cooking.gif" alt="" class="w-64 h-48 rounded-3xl border-8 border-white ">
+        </div>
+
+        <div class="mx-3 md:mx-5 rounded-3xl bg-slate-50">
+
+            <ul>
+                <li *ngFor="let cartItem of cart.items" class="flex items-center p-2 ">
+                    <div class="flex flex-col justify-between 2xl:ml-20 flex-grow"> 
+                        <div class="flex justify-between  ">
+                            <div class="ml-2">{{ cartItem.food.name }}</div>
+                            <div class="ml-1 md:ml-5">{{ cartItem.food.price | currency:'฿' }}</div>
+                            <div class="mr-0 ml-4 md:ml-5 mb-1 md:mb-2 sm:mb-6">
+                                <select #quantitySelect (change)="changeQuantity(cartItem, quantitySelect.value)" class="border-b-4 border-slate-100 rounded-md p-1 shadow-sm md:mt-2">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="mr-2">
+                                {{ cartItem.price | currency:'฿'}}
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </li>
+            </ul>
+        
+        </div>
+        
+        <div class="p-2 mx-2 mt-3 md:mx-5 rounded-3xl bg-slate-50 text-center font-semibold" >
+            <div class="foods-count">จำนวน {{ cart.items.length }} รายการ</div>
+            <div class="total-price">ราคารวม {{ cart.totalPrice | currency:'฿' }}</div>
+        </div>
+        
+          
+          
+        
+        
+        <div class="bottom-0 w-full flex justify-center">
+            <button class="m-6 p-2 ml-7 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[#4e3721] rounded-3xl text-lg text-white" (click)="black()" >
+                กลับหน้าแรก
+            </button>
+            <!-- <button class="m-6 p-2 mr-7 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" >
+                ยืนยัน
+            </button> -->
+        </div>
+
+    </div>
+</div>
