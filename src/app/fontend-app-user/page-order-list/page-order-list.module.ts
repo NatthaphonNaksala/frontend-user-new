@@ -6,9 +6,7 @@ import { PageOrderListRoutingModule } from './page-order-list.routing.module';
 
 
 @NgModule({
-  declarations: [
-    PageOrderListComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     PageOrderListRoutingModule

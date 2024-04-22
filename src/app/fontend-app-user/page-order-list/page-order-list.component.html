@@ -24,15 +24,12 @@
                         <div class="flex justify-between  ">
                             <div class="ml-2">{{ cartItem.food.name }}</div>
                             <div class="ml-1 md:ml-5">{{ cartItem.food.price | currency:'฿' }}</div>
+
                             <div class="mr-0 ml-4 md:ml-5 mb-1 md:mb-2 sm:mb-6">
-                                <select #quantitySelect (change)="changeQuantity(cartItem, quantitySelect.value)" class="border-b-4 border-slate-100 rounded-md p-1 shadow-sm md:mt-2">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                                <p> <strong>x</strong>{{ cartItem.quantity }}</p>
+                              </div>
+                              
+
                             <div class="mr-2">
                                 {{ cartItem.price | currency:'฿'}}
                             </div>
@@ -50,7 +47,6 @@
             <div class="total-price">ราคารวม {{ cart.totalPrice | currency:'฿' }}</div>
         </div>
         
-          
           
         
         
