@@ -98,4 +98,13 @@ export class OrderService {
     );
   }
 
+  getFoodTypes(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8085/food-types');
+  }
+
+  getFoodTypeById(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/getFoodTypeById/${id}`)
+  }
+
+
 }

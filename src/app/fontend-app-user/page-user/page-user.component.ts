@@ -11,6 +11,11 @@ export class PageUserComponent implements OnInit {
   orders: any[] = [];
   files: any = [];
   searchText: any;
+  foodTypes: any = [];
+
+  foodTypeSelected: boolean = false; // เพิ่มตัวแปรนี้
+  selectedFoodType: string | null = null;
+  filteredOrders: any = [];
 
 //ส่วนที่เอาไว้Getออเดอร์มา
   constructor(
@@ -20,16 +25,48 @@ export class PageUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFiles();
+    this.loadFoodTypes();
   }
 
+  //ประเภทอาหารที่เอาไว้ออกมาแสดง
+  loadFoodTypes(): void {
+    this.orderService.getFoodTypes().subscribe((data: any[]) => {
+      this.foodTypes = data;
+    });
+  }
+
+  selectCategory(foodType: any): void {
+    const id = foodType.id;
+    this.getFilesByFoodType(id);
+    this.foodTypeSelected = true; // เมื่อเลือกหมวดหมู่อาหาร
+  }
+
+  showAllOrders(): void {
+    this.foodTypeSelected = false; // อย่าลืมตั้งค่า foodTypeSelected เป็น false เพื่อแสดงรายการทั้งหมด
+    this.filteredOrders = this.files;
+  }
+
+  // getFiles(): void {
+  //   this.orderService.getAllOrders().subscribe(
+  //     (response: any[]) => {
+  //       response.forEach(element => {
+  //         element.test = 'data:image/jpeg;base64,' + element.data;
+  //         this.orders.push(element);
+  //       });
+  //       console.log(this.orders);
+  //     },
+  //     (error: any) => {
+  //       console.error('Error fetching files:', error);
+  //     }
+  //   );
+  // }
   getFiles(): void {
     this.orderService.getAllOrders().subscribe(
-      (response: any[]) => {
-        response.forEach(element => {
-          element.test = 'data:image/jpeg;base64,' + element.data;
-          this.orders.push(element);
-        });
-        console.log(this.orders);
+      (response: any[]) => {     
+        this.files = response.map(element => ({
+          ...element,
+          test: 'data:image/jpeg;base64,' + element.data
+        }));
       },
       (error: any) => {
         console.error('Error fetching files:', error);
@@ -37,6 +74,23 @@ export class PageUserComponent implements OnInit {
     );
   }
 
+  getFilesByFoodType(id: number): void {
+    this.filteredOrders = [];
+    this.orderService.getFoodTypeById(id).subscribe(
+      (response: any[]) => {
+        this.filteredOrders = response.map(element => ({
+          ...element,
+          test: 'data:image/jpeg;base64,' + element.data
+        }));
+      },
+      (error: any) => {
+        console.error('Error fetching files by food type:', error);
+      }
+    );
+  }
+
+
+  
   detailMenu(order: any){
     this.router.navigate(['/page-user-buy'], { state: { order } });
   }
