@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/Cart';
 import { CartItem } from 'src/app/models/CartItem';
@@ -27,7 +27,7 @@ export class PageOrderListComponent implements OnInit{
     this.setCart();
   }
 
-  changeQuantity(cartItem:CartItem, quantityInString:string){
+  changeQuantity(cartItem: CartItem, quantityInString: string) {
     const quantity = parseInt(quantityInString);
     this.cartService.changeQuantity(cartItem.food.id, quantity);
     this.setCart();

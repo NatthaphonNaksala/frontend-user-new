@@ -22,6 +22,7 @@ body{
     background-size: cover; /* ให้รูปภาพขยายเต็มพื้นที่ */
     background-position: center; /* จัดตำแหน่งภาพให้ตรงกลาง */
     background-repeat: no-repeat; /* ไม่ต้องการการทำซ้ำภาพ */
+    background-color: #d8a36e;
   }
   
 
