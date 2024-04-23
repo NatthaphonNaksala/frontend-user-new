@@ -46,23 +46,24 @@
                 </div>
             </div>
         </div> -->
-
-        <div class="grid grid-cols-4 gap-3 mx-3 mt-2 responsive-text">
-            <div class="flex items-center justify-center bg-[rgba(217,217,217,255)] hover:bg-yellow-400 p-5 rounded-3xl" (click)="showAllOrders()">
-              <div class="flex flex-col items-center">
-                <img src="assets/image/menu_all.png" class="w-20">
-                <p class="mx-auto">ทั้งหมด</p>
-              </div>
-            </div> 
+        
+        <div class="m-3 bg-white rounded-3xl ">
+            <div class="grid grid-cols-4 gap-3 mx-3 mt-2 responsive-text">
+                <div class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7" (click)="showAllOrders()">
+                <div class="flex flex-col items-center">
+                    <img src="assets/image/menu_bar01.png" >
+                    <p class="mx-auto">ทั้งหมด</p>
+                </div>
+                </div> 
             
-            <div *ngFor="let foodType of foodTypes" class="flex items-center justify-center bg-[rgba(217,217,217,255)] hover:bg-yellow-400 p-5 rounded-3xl" (click)="selectCategory(foodType)">
+            <div *ngFor="let foodType of foodTypes" class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7" (click)="selectCategory(foodType)">
                 <div class="flex flex-col items-center">
                     <img src="assets/image/menu_bar01.png" >
                   <p class="mx-auto">{{ foodType.name }}</p>
                 </div>
               </div>
             </div>
-
+        </div>
         <!-- <button type="button" routerLink="/page-user/page-user-buy">Here</button> -->
           
         <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-3 mt-2 mb-5">
