@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="mx-2 md:mx-5 rounded-3xl bg-white">
+        <!-- <div class="mx-2 md:mx-5 rounded-3xl bg-white">
 
             <ul>
                 <li *ngFor="let cartItem of cart.items" class="flex items-center p-2">
@@ -69,7 +69,6 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- ข้อมูลตรงกับคำสั่ง "ขึ้นบรรทัดใหม่ให้ชิดซ้ายเมื่อขนาดหน้าจอเล็ก" -->
                         <div class="flex justify-between items-center"> 
                             <div class="">
                                 {{ cartItem.price | currency:'฿'}}
@@ -87,7 +86,32 @@
                 </li>
             </ul>
         
+        </div> -->
+        
+        <div class="mx-2 md:mx-5 rounded-3xl bg-white">
+            <div class="flex items-center p-2" *ngFor="let cartItem of cart.items">
+                <img [src]="cartItem.food.image" class="p-3 w-32 h-32 md:w-500 2xl:h-32 md:h-48 mr-2 md:mr-10 rounded-full">
+                <div class="flex flex-col justify-between 2xl:ml-20 flex-grow"> 
+                    <div class="flex justify-between">
+                        <div>{{ cartItem.food.name }}</div>
+                        <div class="ml-1 md:ml-5">{{ cartItem.food.price | currency:'฿' }}</div>
+                        <!-- เปลี่ยนเป็นการแสดงปุ่ม + และ - และจำนวนสินค้า -->
+                        <div class="ml-auto flex items-center bg-gray-200 rounded-full">
+                            <button (click)="decrement(cartItem)" class="bg-yellow-500 text-white px-4 py-1 rounded-full"> - </button>
+                            <div>{{ cartItem.quantity }}</div>
+                            <button (click)="increment(cartItem)" class="bg-yellow-500 text-white px-4 py-1 rounded-full"> + </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-5"> 
+                        <div>{{ cartItem.price | currency:'฿'}}</div>
+                        <div class="flex items-center">
+                            <button (click)="removeFromCart(cartItem)" class="bg-red-600 text-white px-6 py-1 ml-2 rounded-lg">ลบ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         
 
         <br>
@@ -101,9 +125,16 @@
             <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[#4e3721] rounded-3xl text-lg text-white" (click)="black()">
                 รายการอาหาร
             </button>
-            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="openDialog()">
+            <!-- <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="openDialog()">
+                ยืนยัน
+            </button> -->
+            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="confirmOrder(selectedTableId)">
                 ยืนยัน
             </button>
+            
+            
+            
+                    
         </div>
      
     </div>

@@ -15,6 +15,8 @@ export class PageUserBuyComponent implements OnInit{
   files: any = [];
   orders: any[] = [];
 
+  foodDetails: any[] = [];
+
   constructor(
   public dialog: MatDialog,
   private router: Router,
@@ -32,6 +34,18 @@ export class PageUserBuyComponent implements OnInit{
   
     // ให้ orders เท่ากับออเดอร์ที่ส่งมาจากหน้าก่อนหน้า
     this.orders.push(this.order);
+    this.getFoodDetails();
+  }
+
+  getFoodDetails(): void {
+    this.orderService.getFoodDetails().subscribe(
+      (data: any[]) => {
+        this.foodDetails = data;
+      },
+      (error: any) => {
+        console.error('Error fetching food details:', error);
+      }
+    );
   }
 
   addToCart(){
