@@ -99,9 +99,15 @@ export class PageUserComponent implements OnInit {
   navigateToOrderListPage() {
     this.router.navigateByUrl('/page-order-list');
   }
+
+
+  
  }
 
 
+
+
+ 
 
     // this.orderService.getAllOrders().subscribe(data => {
     //   this.orders = data;
