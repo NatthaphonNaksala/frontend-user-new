@@ -95,6 +95,10 @@ export class PageUserComponent implements OnInit {
     this.router.navigate(['/page-user-buy'], { state: { order } });
   }
 
+
+  navigateToOrderListPage() {
+    this.router.navigateByUrl('/page-order-list');
+  }
  }
 
 
