@@ -49,50 +49,6 @@
                 <p class="mx-auto">โต๊ะ 1</p>
             </div>
         </div>
-
-        <!-- <div class="mx-2 md:mx-5 rounded-3xl bg-white">
-
-            <ul>
-                <li *ngFor="let cartItem of cart.items" class="flex items-center p-2">
-                    <img src="assets/image/food01.png" class="p-3 w-32 h-32 md:w-500 2xl:h-32 md:h-48 mr-2 md:mr-10   rounded-full">
-                    <div class="flex flex-col justify-between 2xl:ml-20 flex-grow"> 
-                        <div class="flex justify-between">
-                            <div>{{ cartItem.food.name }}</div>
-                            <div class="ml-1 md:ml-5">{{ cartItem.food.price | currency:'฿' }}</div>
-                            <div class="mr-3 md:ml-5 mb-1 md:mb-2 sm:mb-6">
-                                <select #quantitySelect (change)="changeQuantity(cartItem, quantitySelect.value)" class="border-b-4 border-slate-100 rounded-md p-1 shadow-sm md:mt-2">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center"> 
-                            <div class="">
-                                {{ cartItem.price | currency:'฿'}}
-                            </div>
-                            <div class="flex items-center">
-                                <div class="bg-slate-100 text-red-600 hover:bg-slate-200 p-1 md:p-2 rounded-lg shadow-sm ml-20">
-                                    <button class="remove-button" (click)="removeFromCart(cartItem)">
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </li>
-            </ul>
-        
-        </div> -->
         
         <div class="mx-2 md:mx-5 rounded-3xl bg-white">
             <div class="flex items-center p-2" *ngFor="let cartItem of cart.items">
@@ -119,7 +75,6 @@
         </div>
         
         
-
         <br>
         <div class="p-2 mx-2 md:mx-5 rounded-3xl bg-white text-center font-semibold" >
             <div class="foods-count">จำนวน {{ cart.items.length }} รายการ</div>
