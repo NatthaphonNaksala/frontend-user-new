@@ -17,6 +17,7 @@ body{
   @apply sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl;
 }
 
+
 .custom-background {
     background-image: url('assets/image/imagebackground.png');
     background-size: cover; /* ให้รูปภาพขยายเต็มพื้นที่ */

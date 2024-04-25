@@ -42,6 +42,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 
+
 @Component({
   selector: 'app-dialog-box',
   templateUrl: './dialog-box.component.html',
@@ -65,6 +66,7 @@ export class DialogBoxComponent {
   confirmAction(): void {
     // ยืนยันการทำรายการ สามารถเพิ่มโค้ดเพื่อเก็บข้อมูลรายการที่เลือกไว้ใน cartService หรือทำอย่างอื่นตามต้องการได้
     // this.cartService.addToCart(this.table);
+    // this.cartService.clearCart();
     this.router.navigate(['/page-order-list']); // เมื่อคลิกยืนยันให้นำผู้ใช้ไปยังหน้ารายการออเดอร์
   }
 }

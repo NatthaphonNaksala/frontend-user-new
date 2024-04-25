@@ -40,10 +40,9 @@
 </div> -->
 
 
-<div class="grid grid-rows-[20fr_60fr] min-h-screen relative">
-    <div class="custom-background-top sticky top-0 w-full h-full "></div>
-   
-    <div class="custom-background relative z-40">
+<div class="custom-background-top sticky top-0 w-full " style="height: 212.2px;"></div>
+    <div class="custom-background relative  overflow-y-auto h-screen ">
+
         <div class="bg-[rgba(250,175,21,1)] mx-4 md:mx-36 my-2 p-3 rounded-3xl mb-3 text-center text-2xl text-white">
             <div class="flex flex-col items-center">
                 <p class="mx-auto">โต๊ะ 1</p>
@@ -81,26 +80,16 @@
             <div class="total-price">ราคารวม {{ cart.totalPrice | currency:'฿' }}</div>
         </div>
 
-        
-        <div class="bottom-0 w-full flex justify-center">
-            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[#4e3721] rounded-3xl text-lg text-white" (click)="black()">
-                รายการอาหาร
-            </button>
-            <!-- <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="openDialog()">
-                ยืนยัน
-            </button> -->
-            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="confirmOrder(); openDialog()">
-                ยืนยัน
-            </button>
-            
-            
-            
-            
-            
-                    
-        </div>
-     
-    </div>
 </div> 
 
-
+<div class="bottom-0 w-full flex justify-center fixed z-50">
+    <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[#b97323] rounded-3xl text-lg text-white" (click)="black()">
+        รายการอาหาร
+    </button>
+    <!-- <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="openDialog()">
+        ยืนยัน
+    </button> -->
+    <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="confirmOrder(); openDialog()">
+        ยืนยัน
+    </button>
+</div> 

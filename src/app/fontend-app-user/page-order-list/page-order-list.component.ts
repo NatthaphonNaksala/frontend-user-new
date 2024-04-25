@@ -38,6 +38,7 @@ export class PageOrderListComponent implements OnInit{
   }
   
   black(){
+    // this.cartService.clearCart();
     this.router.navigate(['/page-user']);
   }
 }

@@ -25,6 +25,15 @@ export interface Order {
 //   receiptNumber?: string;
 // }
 
+interface Food {
+  name: string;
+  price: number;
+  // สามารถเพิ่มคุณสมบัติอื่น ๆ ของอาหารตามต้องการได้
+}
+
+
+
+
 export class OrderItem {
   orderItemId: number | undefined;
   order: Order | undefined;
