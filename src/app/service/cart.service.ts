@@ -143,12 +143,7 @@ import { environment } from "../environment/environment";
       getCart(): Cart {
           return this.cart;
       }
-  
-      // เพิ่มเมธอด clearCart() เพื่อล้างรายการในตะกร้าสินค้า
-      clearCart(): void {
-          this.cart.items = [];
-      }
-  
+
       // เพิ่มเมธอด addOrderItems() เพื่อส่งรายการอาหารไปยัง API เพื่อบันทึกลงในฐานข้อมูล
       addOrderItems(orderItems: OrderItem[]): Observable<any> {
           return this.http.post(`${this.baseUrl}/orderItems`, orderItems);
@@ -157,6 +152,15 @@ import { environment } from "../environment/environment";
       saveCart(cart: Cart): void {
         localStorage.setItem(this.CART_STORAGE_KEY, JSON.stringify(cart));
       }
-    
-  }
+
+      clearCart(): void {
+        this.cart.items = [];
+      }
+      
+} 
+
+
+        // clearCart(): void {
+        //     this.cart.items = [];
+        // }
   

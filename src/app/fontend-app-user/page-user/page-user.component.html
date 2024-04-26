@@ -13,14 +13,14 @@
 
         <div class="m-3 bg-white rounded-3xl p-2">
           <div class="grid grid-cols-5 gap-3 mx-3 mt-2 responsive-text">
-              <div class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7" (click)="showAllOrders()">
+              <div class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7 cursor-pointer" (click)="showAllOrders()">
               <div class="flex flex-col items-center">
                   <img src="assets/image/menu_bar01.png" >
                   <p class="mx-auto">ทั้งหมด</p>
               </div>
               </div> 
           
-          <div *ngFor="let foodType of foodTypes" class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7" (click)="selectCategory(foodType)">
+          <div *ngFor="let foodType of foodTypes" class="flex items-center justify-center border-2 border-yellow-600 hover:bg-yellow-500 bg-white shadow-md rounded-xl px-7 cursor-pointer" (click)="selectCategory(foodType)">
               <div class="flex flex-col items-center">
                   <img src="assets/image/menu_bar01.png" >
                 <p class="mx-auto">{{ foodType.name }}</p>
@@ -31,9 +31,9 @@
 
           <div class="grid grid-cols-2 gap-3 mx-3 mt-2 responsive-text my-2">
             <ng-container *ngIf="!foodTypeSelected; else filteredOrdersSection">
-              <div *ngFor="let order of files | filter: searchText" class="flex items-center justify-center bg-white shadow-md rounded-xl hover:border-2 border-orange-500" (click)="detailMenu(order)">
+              <div *ngFor="let order of files | filter: searchText" class="flex items-center justify-center bg-white shadow-md rounded-xl hover:border-2 border-orange-500 cursor-pointer" (click)="detailMenu(order)">
                 <div>
-                  <img [src]="order.test" alt="Food Image" class="w-full h-44 object-cover object-center rounded-lg">
+                  <img [src]="order.test" alt="Food Image" class="w-full h-44 object-cover object-center rounded-lg ">
                   <p class="mx-2">{{ order.name }}</p>
                   <p class="font-bold mx-2">{{ order.price }} ฿</p>
                 </div>
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-<div class="absolute bottom-0 right-0 h-20 w-20 flex justify-center items-center z-50" style="position: fixed; bottom: 0; right: 0;">
+<div class="absolute bottom-0 right-0 h-20 w-20 flex justify-center items-center z-50 cursor-pointer" style="position: fixed; bottom: 0; right: 0;">
   <img src="assets/image/note3x.png" (click)="navigateToOrderListPage()">
 </div>
 

@@ -113,7 +113,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
-import { OrderService, OrderItem } from 'src/app/service/data.service';
+import { OrderService, OrderItem, Order } from 'src/app/service/data.service';
 import { Cart } from 'src/app/models/Cart';
 import { CartItem } from 'src/app/models/CartItem';
 import { Observable } from 'rxjs';
@@ -128,6 +128,8 @@ export class CartPageComponent implements OnInit {
   selectedTableId: any;
   selectedTable: any;
   orderHistory: any;
+
+
 
   constructor(
     private dialog: MatDialog,
@@ -192,42 +194,43 @@ export class CartPageComponent implements OnInit {
 
   confirmOrder(): void {
     if (this.cart.items.length > 0 && this.selectedTableId) {
-      const orderItems: OrderItem[] = this.cart.items.map(cartItem => {
-        return {
-          orderItemId: undefined,
-          order: cartItem.food,
-          quantity: cartItem.quantity,
-          totalPrice: cartItem.price,
-          status: 'pending',
-          orderDate: new Date(),
-          tableId: this.selectedTableId,
-          tableNumber: this.selectedTableId.toString(),
-          transaction_id: undefined,
-          receiptNumber: undefined,
-        };
-      });
+        const orderItems: OrderItem[] = this.cart.items.map(cartItem => {
+            return {
+                orderItemId: undefined,
+                order: cartItem.food,
+                quantity: cartItem.quantity,
+                totalPrice: cartItem.price,
+                status: 'pending',
+                orderDate: new Date(),
+                tableId: this.selectedTableId,
+                tableNumber: this.selectedTableId.toString(),
+                transaction_id: undefined,
+                receiptNumber: undefined,
+            };
+        });
 
-     
-      // ส่งข้อมูลการสั่งซื้อไปยังฐานข้อมูล
-      this.orderService.addOrderItems(orderItems).subscribe(
-        (response) => {
-          console.log('Order placed successfully:', response);
-          this.openDialog(); // เรียกใช้งานเมื่อสั่งซื้อถูกยืนยัน
-  
-          // อัพเดทข้อมูลใน Local Storage เมื่อมีการสั่งซื้อใหม่
-          this.updateOrderHistoryInLocalStorage(orderItems);
-  
-          // เรียกใช้งานหน้าประวัติของผู้ใช้เพื่อแสดงข้อมูลล่าสุด
-          this.loadOrderHistory();
-        },
-        (error) => {
-          console.error('Error placing order:', error);
-          // Handle error here
-        }
-      );
+        this.orderService.addOrderItems(orderItems).subscribe(
+            (response) => {
+                console.log('Order placed successfully:', response);
+                this.openDialog();
+
+                // Clear the cart only after successful order placement
+
+                // Update order history in local storage
+                this.updateOrderHistoryInLocalStorage(orderItems);
+                this.loadOrderHistory();
+                this.cartService.clearCart();
+
+            }
+            ,
+            (error) => {
+                console.error('Error placing order:', error);
+                // Handle error here
+            }
+        );
     }
-  }
-  
+}
+
   updateOrderHistoryInLocalStorage(orderItems: OrderItem[]) {
     const orderHistory = localStorage.getItem('orderHistory');
     let updatedOrderHistory = orderHistory ? JSON.parse(orderHistory) : [];
@@ -238,8 +241,6 @@ export class CartPageComponent implements OnInit {
     // อัพเดทข้อมูลใน Local Storage
     localStorage.setItem('orderHistory', JSON.stringify(updatedOrderHistory));
   }
-  
-
   
 
   openDialog() {

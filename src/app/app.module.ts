@@ -13,6 +13,7 @@ import { TtestComponent } from './ttest/ttest.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartPageComponent } from './fontend-app-user/cart-page/cart-page.component';
 import { PageOrderListComponent } from './fontend-app-user/page-order-list/page-order-list.component';
+import { DialogBoxEndComponent } from './dialog-box-end/dialog-box-end.component';
 
 
 export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
@@ -27,6 +28,7 @@ export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MatMdcDialogData');
     TtestComponent,
     CartPageComponent,
     PageOrderListComponent,
+    DialogBoxEndComponent,
   ],
   imports: [
     BrowserModule,
