@@ -14,7 +14,6 @@ export class PageUserBuyComponent implements OnInit{
   order!: Order;
   files: any = [];
   orders: any[] = [];
-
   foodDetails: any[] = [];
 
   constructor(

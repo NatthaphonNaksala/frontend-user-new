@@ -11,6 +11,7 @@ export interface Order {
   food_type: string;
   price: number;
   image: string;
+  test?: string;
 }
 
 // export interface OrderItem {

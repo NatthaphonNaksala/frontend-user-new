@@ -130,7 +130,6 @@ export class CartPageComponent implements OnInit {
   orderHistory: any;
 
 
-
   constructor(
     private dialog: MatDialog,
     private cartService: CartService,
@@ -141,12 +140,9 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {
     this.getAllTables();
     this.setCart();
-    this.loadOrderHistory(); // เรียกใช้งานเมื่อโหลดหน้า
     this.loadOrderHistoryFromLocalStorage();
   }
-  loadOrderHistory() {
-    throw new Error('Method not implemented.');
-  }
+
 
   loadOrderHistoryFromLocalStorage() {
     const orderHistory = localStorage.getItem('orderHistory');
@@ -218,7 +214,6 @@ export class CartPageComponent implements OnInit {
 
                 // Update order history in local storage
                 this.updateOrderHistoryInLocalStorage(orderItems);
-                this.loadOrderHistory();
                 this.cartService.clearCart();
             }
             ,
@@ -247,7 +242,7 @@ export class CartPageComponent implements OnInit {
       this.dialog.open(DialogBoxComponent, {
         width: '250px',
         height: '150px',
-        data: { table: this.selectedTable }
+        data: { table: this.selectedTable, cart: this.cart }
       });
     }
   }

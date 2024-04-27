@@ -53,8 +53,8 @@
 
         <div class="mx-2 md:mx-5 rounded-3xl bg-white">
 
-            <div class="flex items-center p-2" *ngFor="let cartItem of cart.items">
-                <img [src]="cartItem.food.image" class="p-3 w-32 h-32 md:w-500 2xl:h-32 md:h-48 mr-2 md:mr-10 rounded-full">
+           <div class="flex items-center p-2" *ngFor="let cartItem of cart.items">
+                <img [src]="cartItem.food.test" class="p-3 w-32 h-32 md:w-500 2xl:h-32 md:h-48 mr-2 md:mr-10 rounded-full">
                 <div class="flex flex-col justify-between 2xl:ml-20 flex-grow"> 
                     <div class="flex justify-between">
                         <div>{{ cartItem.food.name }}</div>
@@ -88,7 +88,7 @@
                 รายการอาหาร
             </button>
         
-            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="confirmOrder(); openDialog()">
+            <button class="m-3 md:m-5 p-3 md:p-5 w-11/12 md:w-1/2 max-w-xs bg-[rgba(250,175,21,1)] rounded-3xl text-lg text-white" (click)="openDialog(); confirmOrder()">
                 ยืนยัน
             </button>
         </div> 
