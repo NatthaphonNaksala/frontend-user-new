@@ -199,7 +199,7 @@ export class CartPageComponent implements OnInit {
                 orderItemId: undefined,
                 order: cartItem.food,
                 quantity: cartItem.quantity,
-                totalPrice: cartItem.price,
+                totalPrice: CartItem.totalPrice(this.cart.items),
                 status: 'pending',
                 orderDate: new Date(),
                 tableId: this.selectedTableId,

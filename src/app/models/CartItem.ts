@@ -12,4 +12,13 @@ export class CartItem{
     get price():number {
         return this.food.price * this.quantity;
     }
+
+        // คำนวณราคารวมของรายการทั้งหมดในตะกร้า
+        static totalPrice(cartItems: CartItem[]): number {
+            let totalPrice = 0;
+            for (const cartItem of cartItems) {
+                totalPrice += cartItem.price;
+            }
+            return totalPrice;
+        }
 }
