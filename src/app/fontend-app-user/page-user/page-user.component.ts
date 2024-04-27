@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, } from '@angular/router';
+import { Cart } from 'src/app/models/Cart';
+import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/data.service';
 
 @Component({
@@ -12,6 +14,9 @@ export class PageUserComponent implements OnInit {
   files: any = [];
   searchText: any;
   foodTypes: any = [];
+  cart!: Cart;
+
+
 
   foodTypeSelected: boolean = false; // เพิ่มตัวแปรนี้
   selectedFoodType: string | null = null;
@@ -21,11 +26,18 @@ export class PageUserComponent implements OnInit {
   constructor(
   private orderService: OrderService,
   private router: Router,
+  private cartService: CartService,
+
   ){}
 
   ngOnInit(): void {
     this.getFiles();
     this.loadFoodTypes();
+    this.setCart();
+  }
+
+  setCart() {
+    this.cart = this.cartService.getCart();
   }
 
   //ประเภทอาหารที่เอาไว้ออกมาแสดง
@@ -46,20 +58,6 @@ export class PageUserComponent implements OnInit {
     this.filteredOrders = this.files;
   }
 
-  // getFiles(): void {
-  //   this.orderService.getAllOrders().subscribe(
-  //     (response: any[]) => {
-  //       response.forEach(element => {
-  //         element.test = 'data:image/jpeg;base64,' + element.data;
-  //         this.orders.push(element);
-  //       });
-  //       console.log(this.orders);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching files:', error);
-  //     }
-  //   );
-  // }
   getFiles(): void {
     this.orderService.getAllOrders().subscribe(
       (response: any[]) => {     
@@ -89,20 +87,24 @@ export class PageUserComponent implements OnInit {
     );
   }
 
-
   
   detailMenu(order: any){
     this.router.navigate(['/page-user-buy'], { state: { order } });
   }
 
-
   navigateToCart() {
-    this.router.navigateByUrl('/page-cart');
+    if (this.cart && this.cart.items && this.cart.items.length > 0) {
+      this.router.navigateByUrl('/page-cart');
+    } 
   }
-
-
   
- }
+  
+  
+  
+  
+
+
+}
 
 
 

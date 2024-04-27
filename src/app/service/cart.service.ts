@@ -122,23 +122,27 @@ import { environment } from "../environment/environment";
       ) {}
   
       addToCart(food: Order): void {
-          let cartItem = this.cart.items.find(item => item.food.id === food.id);
-          if (cartItem) {
-              this.changeQuantity(food.id, cartItem.quantity + 1);
-              return;
-          }
-          this.cart.items.push(new CartItem(food));
-      }
-  
-      removeFromCart(foodId: number): void {
-          this.cart.items = this.cart.items.filter(item => item.food.id !== foodId);
-      }
-  
-      changeQuantity(foodId: number, quantity: number): void {
-          let cartItem = this.cart.items.find(item => item.food.id === foodId);
-          if (!cartItem) return;
-          cartItem.quantity = quantity;
-      }
+        let cartItem = this.cart.items.find(item => item.food.id === food.id);
+        if (cartItem) {
+            this.changeQuantity(food.id, cartItem.quantity + 1);
+            return;
+        }
+        this.cart.items.push(new CartItem(food));
+        this.saveCart(this.cart); // อัพเดตข้อมูลใน local storage เมื่อมีการเพิ่มสินค้าในตะกร้า
+    }
+    
+    removeFromCart(foodId: number): void {
+        this.cart.items = this.cart.items.filter(item => item.food.id !== foodId);
+        this.saveCart(this.cart); // อัพเดตข้อมูลใน local storage เมื่อมีการลบสินค้าในตะกร้า
+    }
+    
+    changeQuantity(foodId: number, quantity: number): void {
+        let cartItem = this.cart.items.find(item => item.food.id === foodId);
+        if (!cartItem) return;
+        cartItem.quantity = quantity;
+        this.saveCart(this.cart); // อัพเดตข้อมูลใน local storage เมื่อมีการเปลี่ยนแปลงปริมาณสินค้าในตะกร้า
+    }
+    
   
       getCart(): Cart {
           return this.cart;
