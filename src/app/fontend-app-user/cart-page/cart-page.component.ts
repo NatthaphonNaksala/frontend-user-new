@@ -220,7 +220,6 @@ export class CartPageComponent implements OnInit {
                 this.updateOrderHistoryInLocalStorage(orderItems);
                 this.loadOrderHistory();
                 this.cartService.clearCart();
-
             }
             ,
             (error) => {
