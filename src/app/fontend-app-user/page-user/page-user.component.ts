@@ -96,8 +96,8 @@ export class PageUserComponent implements OnInit {
   }
 
 
-  navigateToOrderListPage() {
-    this.router.navigateByUrl('/page-order-list');
+  navigateToCart() {
+    this.router.navigateByUrl('/page-cart');
   }
 
 
