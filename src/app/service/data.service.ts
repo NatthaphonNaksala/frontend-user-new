@@ -46,6 +46,7 @@ export class OrderItem {
   transaction_id: any;
   quantity: number | undefined;
   receiptNumber: string | undefined;
+  payment_status: string | undefined; 
 }
 
 

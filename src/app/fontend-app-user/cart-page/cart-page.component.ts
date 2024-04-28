@@ -197,6 +197,7 @@ export class CartPageComponent implements OnInit {
                 quantity: cartItem.quantity,
                 totalPrice: CartItem.totalPrice(this.cart.items),
                 status: 'pending',
+                payment_status: 'uncomplete',
                 orderDate: new Date(),
                 tableId: this.selectedTableId,
                 tableNumber: this.selectedTableId.toString(),
