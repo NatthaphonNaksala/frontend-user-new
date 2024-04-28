@@ -128,6 +128,7 @@ export class CartPageComponent implements OnInit {
   selectedTableId: any;
   selectedTable: any;
   orderHistory: any;
+  selectedDetails: any[] = [];
 
 
   constructor(
@@ -203,7 +204,8 @@ export class CartPageComponent implements OnInit {
                 tableNumber: this.selectedTableId.toString(),
                 transaction_id: undefined,
                 receiptNumber: undefined,
-            };
+                details_id: this.selectedDetails.map(detail => detail.id)[0], // Assuming you only need the first detail id
+              };
         });
 
         this.orderService.addOrderItems(orderItems).subscribe(

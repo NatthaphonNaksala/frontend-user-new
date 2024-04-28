@@ -14,6 +14,7 @@ export class PageUserBuyComponent implements OnInit{
   order!: Order;
   files: any = [];
   orders: any[] = [];
+  selectedDetails: any[] = [];
   foodDetails: any[] = [];
 
   constructor(
@@ -47,15 +48,45 @@ export class PageUserBuyComponent implements OnInit{
     );
   }
 
-  addToCart(){
-    this.cartService.addToCart(this.order);
-    this.router.navigate(['/page-cart']);
-  }
+  // addToCart(){
+  //   this.cartService.addToCart(this.order);
+  //   this.router.navigate(['/page-cart']);
+  // }
+  addToCart() {
+    // ตรวจสอบว่ามีรายการอาหารที่ถูกเลือกหรือไม่
+    if (this.orders.length > 0) {
+        // สร้างรายการอาหารที่เลือกเพื่อเพิ่มลงในตะกร้า
+        const selectedOrder = this.orders[0]; // สมมติว่ามีรายการอาหารเพียงรายการเดียว
+        // ตรวจสอบว่ามีรายการอาหารที่เลือกรายละเอียดหรือไม่
+        if (this.selectedDetails.length > 0) {
+            // เพิ่มรายการอาหารลงในตะกร้าพร้อมกับรายละเอียดที่เลือก
+            selectedOrder.selectedDetails = this.selectedDetails;
+        }
+        this.cartService.addToCart(selectedOrder); // เพิ่มรายการอาหารลงในตะกร้า
+        this.router.navigate(['/page-cart']); // นำผู้ใช้ไปยังหน้าตะกร้าสินค้า
+    } else {
+        console.log('No food item selected.'); // หากไม่มีรายการอาหารที่ถูกเลือก
+    }
+}
+
+
 
   black(){
     this.router.navigate(['/page-user']);
   }
- 
+  
+  toggleDetailSelection(detail: any): void {
+    const index = this.selectedDetails.findIndex(selectedDetail => selectedDetail.id === detail.id);
+    if (index === -1) {
+        // Add the selected detail
+        this.selectedDetails.push(detail);
+    } else {
+        // Remove the selected detail
+        this.selectedDetails.splice(index, 1);
+    }
+}
+
+
 }
 
 // orders: any[] = [];
