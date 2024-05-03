@@ -1,5 +1,3 @@
-// data.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,26 +12,10 @@ export interface Order {
   test?: string;
 }
 
-// export interface OrderItem {
-//   orderItemId?: number;
-//   order: Order;
-//   orderDate: Date;
-//   totalPrice: number;
-//   tableNumber?: string; // ใช้ tableNumber แทนการกำหนดโต๊ะเป็นสตริงโดยตรง
-//   status: string;
-//   transaction_id?: any;
-//   quantity: number;
-//   receiptNumber?: string;
-// }
-
 interface Food {
   name: string;
   price: number;
-  // สามารถเพิ่มคุณสมบัติอื่น ๆ ของอาหารตามต้องการได้
 }
-
-
-
 
 export class OrderItem {
   orderItemId: number | undefined;
@@ -117,6 +99,5 @@ export class OrderService {
   getFoodTypeById(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/getFoodTypeById/${id}`)
   }
-
 
 }

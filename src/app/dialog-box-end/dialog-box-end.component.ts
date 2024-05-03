@@ -22,7 +22,7 @@ export class DialogBoxEndComponent {
 
   confirmAction(): void {
     this.cartService.clearCart();
-    this.router.navigate(['/page-user']); // เมื่อคลิกยืนยันให้นำผู้ใช้ไปยังหน้ารายการออเดอร์
+    this.router.navigate(['/page-user']);
   }
 
 }

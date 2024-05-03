@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogBoxComponent } from 'src/app/dialog-box/dialog-box.component';
 import { CartService } from 'src/app/service/cart.service';
 import { Order, OrderService } from 'src/app/service/data.service';
 
@@ -45,8 +44,8 @@ export class PageUserBuyComponent implements OnInit{
       (error: any) => {
         console.error('Error fetching food details:', error);
       }
-    );
-  }
+      );
+    }
 
   // addToCart(){
   //   this.cartService.addToCart(this.order);
@@ -66,64 +65,22 @@ export class PageUserBuyComponent implements OnInit{
         this.router.navigate(['/page-cart']); // นำผู้ใช้ไปยังหน้าตะกร้าสินค้า
     } else {
         console.log('No food item selected.'); // หากไม่มีรายการอาหารที่ถูกเลือก
-    }
-}
-
-
+      }
+  }
 
   black(){
     this.router.navigate(['/page-user']);
   }
   
   toggleDetailSelection(detail: any): void {
-    const index = this.selectedDetails.findIndex(selectedDetail => selectedDetail.id === detail.id);
-    if (index === -1) {
-        // Add the selected detail
-        this.selectedDetails.push(detail);
-    } else {
-        // Remove the selected detail
-        this.selectedDetails.splice(index, 1);
+      const index = this.selectedDetails.findIndex(selectedDetail => selectedDetail.id === detail.id);
+      if (index === -1) {
+          // Add the selected detail
+          this.selectedDetails.push(detail);
+      } else {
+          // Remove the selected detail
+          this.selectedDetails.splice(index, 1);
+      }
     }
-}
-
 
 }
-
-// orders: any[] = [];
-
-// private orderService: OrderService,
-
-
-// ngOnInit(): void {
-//   this.orderService.getAllOrders().subscribe(data => {
-//     this.orders = data;
-//   });
-// }
-
-
-    // const navigation = this.router.getCurrentNavigation();
-    // if (navigation) {
-    //   const state = navigation.extras.state;
-    //   if (state) {
-    //     this.order = state['order'];
-    //   }
-    // }
-
-
-      // getFilesForOrder(orderId: string): void {
-  //   this.orderService.getFilesForOrder(orderId).subscribe(
-  //     (response: any[]) => {
-  //       this.files = response;
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching files for order:', error);
-  //     }
-  //   );
-  // }
-  
-  // openDialog(){
-  //   this.dialog.open(DialogBoxComponent,{
-  //     width: '250px',
-  //     height: '150px',      
-  //   })
-  // }

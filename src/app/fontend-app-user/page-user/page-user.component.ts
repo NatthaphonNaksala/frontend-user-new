@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, } from '@angular/router';
 import { Cart } from 'src/app/models/Cart';
 import { CartService } from 'src/app/service/cart.service';
@@ -15,20 +15,15 @@ export class PageUserComponent implements OnInit {
   searchText: any;
   foodTypes: any = [];
   cart!: Cart;
-
-
-
   foodTypeSelected: boolean = false; // เพิ่มตัวแปรนี้
   selectedFoodType: string | null = null;
   filteredOrders: any = [];
 
-//ส่วนที่เอาไว้Getออเดอร์มา
   constructor(
   private orderService: OrderService,
   private router: Router,
   private cartService: CartService,
-
-  ){}
+  ) {}
 
   ngOnInit(): void {
     this.getFiles();
@@ -98,32 +93,4 @@ export class PageUserComponent implements OnInit {
     } 
   }
   
-  
-  
-  
-  
-
-
 }
-
-
-
-
- 
-
-    // this.orderService.getAllOrders().subscribe(data => {
-    //   this.orders = data;
-    // });
-
- // OrderDetails(name: string, price: number) {
-  //   // สร้างข้อมูลที่ต้องการส่งไปกับ URL
-  //   const userBuyData = { name, price };
-  //   // กำหนดข้อมูลเพิ่มเติมด้วย NavigationExtras
-  //   const navigationExtras: NavigationExtras = {
-  //     state: {
-  //       userBuy: userBuyData
-  //     }
-  //   };
-  //   // Navigate ไปยัง URL '/page-user/page-user-buy' พร้อมกับข้อมูลที่ต้องการส่ง
-  //   this.router.navigateByUrl('/page-user/page-user-buy', navigationExtras);
-  // }

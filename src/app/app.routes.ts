@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-import { PageUserComponent } from "./fontend-app-user/page-user/page-user.component";
 
 export const routes: Routes = [
     {
