@@ -4,11 +4,15 @@
 @tailwind utilities;
 
 
-/*ฟ้อน*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&family=Noto+Sans:ital,wght@1,500&display=swap');
+@font-face {
+  font-family: 'Noto Sans Thai' ;
+  src: 
+    url('./assets/fonts/NotoSansThai_Condensed-Regular.ttf') format('truetype'),
+    url('./assets/fonts/NotoSansThai_Condensed-Bold.ttf') format('truetype')
+}
 
-body{
-  font-family: 'Noto Sans', sans-serif;
+*{
+  /* font-family: 'Noto Sans', sans-serif; */
   font-family: 'Noto Sans Thai', sans-serif;
 }
 
